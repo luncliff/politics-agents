@@ -8,6 +8,7 @@
     "charliermarsh.ruff",
     "ms-vscode.powershell",
     "edwardkim.rhwp-vscode",
+    "yzane.markdown-pdf",
     "EditorConfig.EditorConfig"
   ]
 }
