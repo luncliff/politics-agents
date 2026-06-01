@@ -8,6 +8,7 @@ Scope: `문서/` 하위. 공통 규약은 [/AGENTS.md](../AGENTS.md).
 - 대표 문서:
   - [channels.md](channels.md) — 채널별 설정 (Copilot / Codex / Claude Code).
   - [참고자료-경기도-성남시.md](참고자료-경기도-성남시.md), [참고자료-경기도.md](참고자료-경기도.md), [참고자료-성남시.md](참고자료-성남시.md), [성남시-공개데이터.md](성남시-공개데이터.md) — 지역 참조 문서.
+  - [참고자료-정책브리핑.md](참고자료-정책브리핑.md) — 대한민국 정책브리핑(korea.kr) 중앙정부 보도자료·간행물 참조.
   - [nemotron-personas.md](nemotron-personas.md) — Nemotron-Personas-Korea 가이드.
 - 조례안 작성 패키지는 [성남시-조례안-템플릿.md](../보관함/양식/성남시-조례안-템플릿.md), [성남시-조례안-작성-안내.md](../보관함/양식/성남시-조례안-작성-안내.md)를 사용한다.
 - 사용자용 도구 사용법은 저장소 루트 [README.md](../README.md)에서 설명한다. 같은 절차를 문서/ 하위에 새로 만들지 않는다.
