@@ -6,7 +6,7 @@
 
 | 형식 | 예시 |
 |---|---|
-| `verb-noun` | `track-budget`, `track-funds`, `track-timeline`, `track-transit`, `collect-ordinance`, `review-persona`, `review-party-alignment`, `write-retro`, `find-night-clinic`, `add-vscode-task`, `improve-harness`, `track-goals`, `diagnose-prompts` |
+| `verb-noun` | `track-budget`, `track-funds`, `track-timeline`, `track-transit`, `collect-ordinance`, `review-persona`, `review-alignment-theminjoo`, `write-retro`, `find-night-clinic`, `add-vscode-task`, `improve-harness`, `track-goals`, `diagnose-prompts` |
 
 ## Agents
 

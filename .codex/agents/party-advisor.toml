@@ -60,4 +60,5 @@ Assume the default notebook contains materials of this type:
 ## Notes
 
 - This agent is primarily for Q&A briefing, not document processing.
-- Document processing is handled by the appropriate agent or skill only when the user requests it."""
+- Document processing is handled by the appropriate agent or skill only when the user requests it.
+- Use this agent for quick rule Q&A; use the `review-alignment-theminjoo` skill for document alignment review and response-structure design with dual party-member and neutral perspectives."""
