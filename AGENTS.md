@@ -11,7 +11,7 @@ Korean local-politics information pipeline: **collect → process → publish**,
 | Path | AGENTS.md | Purpose |
 | --- | --- | --- |
 | `.agents/` | [.agents/AGENTS.md](.agents/AGENTS.md) | Skill / agent conventions, retrospective duty |
-| `.codex/`, `.claude/` | — | Channel-specific configs (see [문서/channels.md](문서/channels.md)) |
+| `.github/`, `.vscode/`, `.codex/`, `.claude/`, `.gemini/antigravity/` | — | 채널별 설정 (아래 섹션 참조) |
 | `tools/` | [tools/AGENTS.md](tools/AGENTS.md) | MCP servers, JS/Python adapters, lint configs |
 | `scripts/` | [scripts/AGENTS.md](scripts/AGENTS.md) | Setup, fetch, hooks, lint helpers |
 | `문서/` | [문서/AGENTS.md](문서/AGENTS.md) | Flat documentation set |
@@ -19,6 +19,16 @@ Korean local-politics information pipeline: **collect → process → publish**,
 | `data/`, `notebooks/` | — | Datasets and NotebookLM bundles |
 | `회고/` | — | Session retrospectives (`YYYY-MM-DD <slug>.md`) |
 | `location.txt` | — | Current working region; read at session start |
+
+## 채널별 설정
+
+| Channel | Location | Purpose |
+| --- | --- | --- |
+| GitHub Copilot | `.github/` | Copilot instructions, prompts, agents |
+| VS Code | `.vscode/` | workspace tasks, MCP, toolsets |
+| Codex CLI | `.codex/` | Codex config, agents |
+| Claude Code | `.claude/` | Claude commands, agents, settings |
+| Google Antigravity | `.gemini/antigravity/` | Antigravity MCP server config |
 
 ## Key Rules
 
@@ -112,6 +122,5 @@ Call `write-retro` skill (Copilot/Codex) or `/retro` (Claude Code). Save to `회
 ## See also
 
 - [문서/AGENTS.md](문서/AGENTS.md) — 문서 폴더 규칙 · 자료원 우선순위 · 조례 재배치 규칙.
-- [문서/channels.md](문서/channels.md) — Copilot / Codex / Claude Code channels.
 - [SECURITY.md](SECURITY.md) — 보안 정책 · 자격증명 정리.
 - [.agents/CONVENTIONS.md](.agents/CONVENTIONS.md) — naming rules.
