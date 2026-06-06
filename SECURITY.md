@@ -14,7 +14,6 @@
 - 자격증명·토큰·API 키 커밋 금지(어느 브랜치도).
 - `main`에 `git push --force` 금지.
 - `gitleaks` · `lint` 워크플로 비활성화 금지.
-- `mask-pii` 스킬 외부에서 PII 처리 금지.
 - 마스킹 키 디스크 저장 금지.
 
 ## Threat Model
@@ -26,7 +25,7 @@
 | 의도치 않은 전역 변경 | `scripts/setup.*` · Copilot CLI hooks가 동의 게이트 |
 | 무인 파괴 명령 | `Bypass Approvals` · `Autopilot` · `/yolo` 비활성, `preToolUse` 훅이 로그/차단 |
 | 임의 외부 도메인 호출 | `chat.agent.networkFilter` 화이트리스트 + 신규 도메인 명시 승인 |
-| 산출물 PII | `mask-pii` 스킬 의무 |
+| 산출물 PII | 최소 수집 원칙 + 공개 전 수동 점검 |
 | 의존성 취약점 | Dependabot · `pyproject.toml`/`package.json` 모니터링 |
 
 ## Workspace-local
@@ -37,7 +36,7 @@
 | --- | --- | --- |
 | Copilot CLI | `.copilot/` | `~/.copilot/` 동의 시만 |
 | MCP 서버 | `.vscode/mcp.json` | 전역 `mcp.json` 수정 금지 |
-| 프롬프트·스킬·에이전트 | `.github/prompts/`, `.agents/skills/`, `agents/` | 사용자 prompts 폴더 옵트인 |
+| 프롬프트·스킬·에이전트 | `.claude/commands/`, `.agents/skills/`, `.claude/agents/`, `.codex/agents/` | 사용자 prompts 폴더 옵트인 |
 | Node | repo `node_modules/` | `npm i -g` setup만, 동의 필요 |
 | Python | `.venv/` (uv) | `uv tool install --global` 옵트인 |
 | Git config | `.git/config` | `git config --global` 동의 시만 |

@@ -1,6 +1,5 @@
 name = "party-advisor"
 description = "Political support agent that answers questions against a NotebookLM notebook containing party platforms, party constitution, party rules, ethics codes, and election-practice documents, then summarizes alignment, ethical risks, and practical checkpoints based on those responses. Use when: asking party-rule questions directly without preprocessing, reviewing promotional material or messaging, checking local-election rules, and briefing value alignment."
-model = "gpt-5.2"
 developer_instructions = """# party-advisor
 
 ## Invocation Input

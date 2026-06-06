@@ -138,11 +138,11 @@ description: "대한민국 기초/광역 지방자치단체의 정책·사업 �
 
 - 외부 호출은 `*.go.kr` 화이트리스트 우선. 신규 도메인은 명시 동의 후 사용.
 - robots.txt·rate limit 준수.
-- 회의록에서 추출한 인명·연락처는 `mask-pii` 통과 후에만 저장.
+- 회의록에서 추출한 인명·연락처는 저장 전 수동 점검 후 비공개 처리.
 
 ## 참고 자원
 
 - 대상 지자체 본청 정보공개 > 재정공시 (예산서·결산서·사업설명서)
 - 지방재정365 (`lofin.mois.go.kr`)
 - 대상 지자체 의회 의안정보·회의록
-- 관련 스킬: `mask-pii`, `track-funds`, `collect-ordinance`
+- 관련 스킬: `track-funds`, `collect-ordinance`

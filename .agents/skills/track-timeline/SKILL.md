@@ -33,7 +33,7 @@ description: "대한민국 지방자치단체와 상위 광역자치단체의 �
 4. **상위 광역자치단체 의회** — 광역 의사일정(대상 지자체 예산 심의의 상위 일정)
 
 원본은 URL로 직접 접근해 `보관함/다운로드/<host>/<basename>`에 저장하고 `.meta.json`(source_url, collected_at, SHA-256)을 함께 기록한다.
-조사 단계는 `@gov-researcher` 에이전트 활용 권장.
+조사 단계는 `@korea-gov-scraper` 에이전트 활용 권장.
 
 ### 2. 추출 항목
 
@@ -121,7 +121,7 @@ description: "대한민국 지방자치단체와 상위 광역자치단체의 �
 
 - 외부 호출은 `*.go.kr` 화이트리스트 우선.
 - robots.txt·rate limit 준수.
-- 회의록·공문에서 발견한 인명·연락처는 `mask-pii` 통과 후 저장.
+- 회의록·공문에서 발견한 인명·연락처는 저장 전 수동 점검 후 비공개 처리.
 
 ## 참고 자원
 
@@ -129,5 +129,5 @@ description: "대한민국 지방자치단체와 상위 광역자치단체의 �
 - 대상 지자체 본청 정보공개·재정공시·고시공고
 - 상위 광역자치단체 예산편성지침·재정정보
 - 상위 광역자치단체 의회 의사일정
-- 관련 에이전트/스킬: `@gov-researcher`, `mask-pii`,
+- 관련 에이전트/스킬: `@korea-gov-scraper`,
   `track-budget`, `track-funds`, `write-retro`

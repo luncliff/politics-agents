@@ -4,7 +4,7 @@
 
 | 채널 | 위치 | 용도 |
 | --- | --- | --- |
-| GitHub Copilot | `.github/` | Copilot instructions, prompts, agents |
+| GitHub Copilot | `.github/` + `.claude/` | Copilot instructions/hooks + shared agents/commands |
 | Codex CLI | `.codex/` | Codex config, agents |
 | Claude Code | `.claude/` | Claude commands, agents, settings |
 | VS Code | `.vscode/` | workspace tasks, MCP, toolsets |

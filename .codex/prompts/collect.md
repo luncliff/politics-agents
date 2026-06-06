@@ -15,7 +15,7 @@ Site-collection operator that preserves originals under `보관함/다운로드/
 3. Compute SHA-256.
 4. Save to `보관함/다운로드/<host>/<basename>` (no date prefix).
 5. Write sidecar `<basename>.meta.json` with `source_url`, `collected_at` (ISO-8601 KST), `content_sha256`, `license`, `robots_checked`.
-6. If PII may appear, run `mask-pii` before any derived artifact under `보관함/결과/`.
+6. If PII may appear, do a manual review before writing any derived artifact under `보관함/결과/`.
 
 ## Output
 - List of saved paths

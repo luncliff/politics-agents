@@ -130,5 +130,5 @@ description: "대한민국 지방자치단체 기금(Funds)의 예산 규모·�
 - 대상 지자체 본청 재정정보공개 포털 (예산안·기금운용계획·결산서)
 - 국가법령정보센터 / 자치법규정보시스템 (`elis.go.kr`)
 - 대상 지자체 의회 회의록 (예결특위 등)
-- 관련 스킬: `collect-ordinance`, `mask-pii`
+- 관련 스킬: `collect-ordinance`
 - 관련 에이전트: `lawyer` (법령 조회 시 Legal Data Lookup Priority 적용)

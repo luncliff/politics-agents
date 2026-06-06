@@ -4,8 +4,8 @@ Scope: `.agents/` 내 skill·agent 정의. 공통 규약은 [/AGENTS.md](../AGEN
 
 ## 구성
 
-- `skills/<verb-noun>/SKILL.md` — 재사용 가능한 작업 단위 (예: `mask-pii`, `write-retro`).
-- 에이전트 정의는 채널별 폴더(`.github/agents/`, `.codex/agents/`, `.claude/agents/`)에 분산.
+- `skills/<verb-noun>/SKILL.md` — 재사용 가능한 작업 단위 (예: `write-retro`, `track-goals`).
+- 에이전트 정의는 `.claude/agents/`, `.codex/agents/`에 두고 Copilot은 `.claude/agents/`를 공용으로 활용.
 
 ## 추가 기준
 

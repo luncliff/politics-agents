@@ -25,8 +25,7 @@ description: 저장소 전체의 prompt, agent instructions, tool configuration,
 | Claude Code commands | `.claude/commands/*.md` |
 | Claude Code settings | `.claude/settings.json` |
 | Claude Code MCP | `.mcp.json` |
-| Copilot agents | `.github/agents/*.agent.md` |
-| Copilot prompts | `.github/prompts/*.prompt.md` |
+| Copilot shared agents/commands | `.claude/agents/*.md`, `.claude/commands/*.md` |
 | Copilot instructions | `.github/copilot-instructions.md` |
 | Codex agents | `.codex/agents/*.toml` |
 | Codex config | `.codex/config.toml` |

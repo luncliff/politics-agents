@@ -12,8 +12,8 @@ description: "사용자가 명시적으로 요청한 경우에만 retrospective 
 | 구성요소 | 위치 | 역할 |
 |---|---|---|
 | **Skills** | `.agents/skills/<verb-noun>/SKILL.md` | 재사용 가능한 단일 목적 작업 단위 |
-| **Agents** | `.claude/agents/`, `.codex/agents/`, `.github/agents/` | 도메인 전문 페르소나·서브에이전트 |
-| **Prompts / Commands** | `.github/prompts/`, `.claude/commands/`, `.codex/prompts/` | 채널별 사용자 진입점 |
+| **Agents** | `.claude/agents/`, `.codex/agents/` | 도메인 전문 페르소나·서브에이전트 |
+| **Prompts / Commands** | `.claude/commands/`, `.codex/prompts/` | 채널별 사용자 진입점 |
 | **Hooks** | `.claude/settings.json`, `.github/hooks/` | 세션 시작·종료·명령 전후 자동 트리거 |
 | **MCP 설정** | `.vscode/mcp.json`, `.mcp.json` | 외부 도구 연결(legalize-kr, notebooklm 등) |
 | **명명 규약** | `.agents/CONVENTIONS.md` | 일관된 식별자 체계 |

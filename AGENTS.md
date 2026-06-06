@@ -41,8 +41,8 @@ Korean local-politics information pipeline: **collect → process → publish**,
 
 ### PII
 
-- MUST run `mask-pii` skill before saving or sharing any text that may contain PII.
-- NEVER persist masking keys to disk (memory only).
+- PII(이름·연락처·주민번호·주소·이메일)는 수집·저장·공유를 최소화한다.
+- PII가 보이면 산출물 공개 전 수동 점검으로 제거 또는 비공개 처리한다.
 - Originals stay in `보관함/다운로드/` for personal review only — NEVER share.
 
 ### Political neutrality

@@ -39,8 +39,8 @@ license: CC BY 4.0
 - VS Code Task: `civic: fetch nemotron personas (dry-run|download)`,
   `civic: sample nemotron panel (national 600|local from location.txt)`
 - 스킬: [.agents/skills/review-persona/SKILL.md](../.agents/skills/review-persona/SKILL.md)
-- 에이전트: [.github/agents/persona-panel.agent.md](../.github/agents/persona-panel.agent.md)
-- 프롬프트: [.github/prompts/persona-review.prompt.md](../.github/prompts/persona-review.prompt.md)
+- 에이전트: [.claude/agents/persona-panel.md](../.claude/agents/persona-panel.md)
+- 명령: [.claude/commands/persona-review.md](../.claude/commands/persona-review.md)
 
 ## 정책 (본 저장소)
 
