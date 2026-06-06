@@ -88,7 +88,7 @@ try {
 - Hooks: `.claude/settings.json` (SessionStart, Stop, PreToolUse Bash 가드)
 - MCP: `.mcp.json`
 
-상세 채널 설정은 [문서/channels.md](문서/channels.md).
+상세 채널 설정은 [AGENTS.md](AGENTS.md)의 `채널별 설정` 섹션.
 
 ### Copilot Agent Source
 
@@ -137,7 +137,7 @@ GitHub Copilot은 `.claude/agents/*.md`와 `.claude/commands/*.md`를 공용 소
 | --- | --- |
 | Agent 규칙 (저장소 전체) | [AGENTS.md](AGENTS.md) |
 | 문서 폴더 규칙 | [문서/AGENTS.md](문서/AGENTS.md) |
-| 채널별 설정 | [문서/channels.md](문서/channels.md) |
+| 채널별 설정 | [AGENTS.md](AGENTS.md) |
 | 보안 정책 | [SECURITY.md](SECURITY.md) |
 | 지역 참조 자료 | [문서/참고자료-경기도-성남시.md](문서/참고자료-경기도-성남시.md) |
 
