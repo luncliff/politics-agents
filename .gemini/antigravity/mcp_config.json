@@ -1,0 +1,33 @@
+{
+  "mcpServers": {
+    "notebooklm": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "notebooklm-mcp-cli",
+        "notebooklm-mcp"
+      ]
+    },
+    "legalize-kr": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "legalize-cli[mcp]",
+        "legalize-mcp"
+      ],
+      "env": {
+        "GH_HOST": "github.com",
+        "GITHUB_TOKEN": "$GITHUB_TOKEN"
+      }
+    },
+    "ollama": {
+      "command": "npx",
+      "args": [
+        "ollama-mcp-server"
+      ],
+      "env": {
+        "OLLAMA_HOST": "http://127.0.0.1:11434"
+      }
+    }
+  }
+}
