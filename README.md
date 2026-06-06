@@ -74,7 +74,7 @@ try {
 
 ### Use with Codex CLI
 
-같은 워크스페이스의 `agents/`·`.agents/skills/`·`.github/prompts/`·`.vscode/mcp.json`을 그대로 사용합니다.
+같은 워크스페이스의 `.claude/agents/`·`.claude/commands/`·`.agents/skills/`·`.vscode/mcp.json`을 그대로 사용합니다.
 
 1. 저장소 루트에서 Codex 세션을 시작합니다(워크스페이스 트러스트 필수).
 2. 첫 응답에서 [AGENTS.md](AGENTS.md)의 규칙(특히 citation·PII·destructive command 가드)을 따르는지 확인합니다.
@@ -83,12 +83,16 @@ try {
 
 ### Use with Claude Code
 
-- Subagents: `.claude/agents/*.md` (lawyer, ordinance, gov-researcher, persona-panel, minutes, party-advisor)
+- Subagents: `.claude/agents/*.md` (lawyer, ordinance, korea-gov-scraper, persona-panel, party-advisor)
 - Slash commands: `.claude/commands/*.md` (`/retro`, `/brief`, `/persona-review`, `/collect`, `/health`, `/diagnose-prompts`, `/improve-harness`, `/track-goals`)
 - Hooks: `.claude/settings.json` (SessionStart, Stop, PreToolUse Bash 가드)
 - MCP: `.mcp.json`
 
 상세 채널 설정은 [AGENTS.md](AGENTS.md)의 `채널별 설정` 섹션.
+
+### Copilot Agent Source
+
+GitHub Copilot은 `.claude/agents/*.md`와 `.claude/commands/*.md`를 공용 소스로 함께 활용합니다.
 
 ### Use in VS Code
 

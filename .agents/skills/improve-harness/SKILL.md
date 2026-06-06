@@ -12,8 +12,8 @@ description: "사용자가 명시적으로 요청한 경우에만 retrospective 
 | 구성요소 | 위치 | 역할 |
 |---|---|---|
 | **Skills** | `.agents/skills/<verb-noun>/SKILL.md` | 재사용 가능한 단일 목적 작업 단위 |
-| **Agents** | `.claude/agents/`, `.codex/agents/`, `.github/agents/` | 도메인 전문 페르소나·서브에이전트 |
-| **Prompts / Commands** | `.github/prompts/`, `.claude/commands/`, `.codex/prompts/` | 채널별 사용자 진입점 |
+| **Agents** | `.claude/agents/`, `.codex/agents/` | 도메인 전문 페르소나·서브에이전트 |
+| **Prompts / Commands** | `.claude/commands/`, `.codex/prompts/` | 채널별 사용자 진입점 |
 | **Hooks** | `.claude/settings.json`, `.github/hooks/` | 세션 시작·종료·명령 전후 자동 트리거 |
 | **MCP 설정** | `.vscode/mcp.json`, `.mcp.json` | 외부 도구 연결(legalize-kr, notebooklm 등) |
 | **명명 규약** | `.agents/CONVENTIONS.md` | 일관된 식별자 체계 |
@@ -22,23 +22,27 @@ description: "사용자가 명시적으로 요청한 경우에만 retrospective 
 ### Agentic Harness Engineering 원칙 (공개 가이드 정리)
 
 **Anthropic Claude Code — subagents best practice**
+
 - 서브에이전트는 단일 책임(Single Responsibility). 하나의 에이전트에 너무 많은 도메인을 넣지 않는다.
 - `description`의 **"Use when:"** 절이 명확할수록 모델이 자동 선택 정확도가 높아진다.
 - `CLAUDE.md`(= 이 저장소의 `AGENTS.md`)를 세션 시작에 자동으로 읽힌다 — 규칙 중복 작성 금지.
 - 참조: <https://docs.anthropic.com/en/docs/claude-code/sub-agents>
 
 **OpenAI Codex CLI — prompting guide**
+
 - 짧은 명령형 식별자(`brief`, `collect`, `retro`)가 긴 명사구보다 호출 안정성이 높다.
 - `developer_instructions`에 **Role / Context / Procedure / Output** 4섹션 구조를 쓰면 모델이 일관된 출력을 만든다.
 - 참조: <https://github.com/openai/codex> (README `# Custom instructions`)
 
 **LLM-powered autonomous agent patterns (Lilian Weng, 2023)**
+
 - Planning: 목표를 하위 작업으로 분해(task decomposition). 이 저장소의 `track-goals` skill이 담당.
 - Memory: 단기(세션 컨텍스트) + 장기(`회고/*.md`, `.goals/current.md`). 회고를 harness 개선 루프에 연결하는 것이 핵심.
 - Tool use: 외부 API·파일시스템·MCP를 통해 agent 능력을 확장. 과도한 권한은 `pre-tool-bash.ps1` 훅으로 차단.
 - 참조: <https://lilianweng.github.io/posts/2023-06-23-agent/>
 
 **Retrospective-driven improvement loop (이 저장소 패턴)**
+
 1. 세션 종료 → `write-retro` 로 회고 저장
 2. 충분한 회고 누적(≥ 3 세션) → `improve-harness` 실행
 3. 반복 패턴 → skill/agent/hook 생성 또는 강화
@@ -53,6 +57,7 @@ description: "사용자가 명시적으로 요청한 경우에만 retrospective 
 ### 1. 회고 수집
 
 `회고/*.md`를 읽어 다음을 추출:
+
 - `## 막힌 것` 항목 전체
 - `## 자동화 후보` 항목 전체
 - `## 새로 알게 된 사이트·포맷·정책` 항목 전체
@@ -72,6 +77,7 @@ description: "사용자가 명시적으로 요청한 경우에만 retrospective 
 ### 3. 사용자 질문
 
 식별된 패턴을 우선순위순으로 정리하고, 각각에 대해 구조화된 질문:
+
 - "X가 N회 반복됩니다. 자동화할까요? [skill / hook / 보류]"
 - "Y 사이트를 references에 추가할까요? [추가 / 보류]"
 - "Z 규칙을 기존 스킬에 반영할까요? [반영 / 보류]"

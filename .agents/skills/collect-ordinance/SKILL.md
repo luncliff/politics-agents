@@ -45,6 +45,7 @@ argument-hint: "<지자체명> [조례명|주제|최신목록]"
 `AGENTS.md`의 **Legal Data Lookup Priority**를 따른다:
 
 **Tier 1 — 로컬 클론 확인**
+
 - `보관함/ordinance-kr/{광역}/{기초}/{종류}/{조례명}/본문.md`에 해당 조례가 있는지 먼저 확인한다.
 - `location.txt`에서 읽은 광역·기초 지자체 내 경로만 검색한다.
   (ex. `보관함/ordinance-kr/경기도/성남시/조례/`)
@@ -52,6 +53,7 @@ argument-hint: "<지자체명> [조례명|주제|최신목록]"
 - `보관함/ordinance-kr/.git`가 없으면 Tier 2로 진행한다.
 
 **Tier 2 — `legalize-kr` MCP** (로컬에 데이터가 없을 때)
+
 - `ordinances_search`, `ordinances_get`으로 조례 본문·메타 조회.
 - MCP가 미설정이거나 결과가 부족하면 Tier 3으로 진행.
 
@@ -121,7 +123,7 @@ argument-hint: "<지자체명> [조례명|주제|최신목록]"
 - 본문은 원문 텍스트를 **토씨 하나 바꾸지 않고 그대로 보존**한다.
 - 조문 구조를 나눌 때도 원문 문구를 고치지 않는다.
 - 제목, 공포문, 부칙, 별표가 있으면 누락 없이 포함한다.
-- PII가 등장할 경우 `mask-pii` 스킬을 통과시킨 결과만 저장.
+- PII가 등장할 경우 저장 전 수동 점검 후 공개본에서 제외한다.
 
 ### 6. 주제별(Semantic) 분류
 

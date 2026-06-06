@@ -25,8 +25,7 @@ description: 저장소 전체의 prompt, agent instructions, tool configuration,
 | Claude Code commands | `.claude/commands/*.md` |
 | Claude Code settings | `.claude/settings.json` |
 | Claude Code MCP | `.mcp.json` |
-| Copilot agents | `.github/agents/*.agent.md` |
-| Copilot prompts | `.github/prompts/*.prompt.md` |
+| Copilot shared agents/commands | `.claude/agents/*.md`, `.claude/commands/*.md` |
 | Copilot instructions | `.github/copilot-instructions.md` |
 | Codex agents | `.codex/agents/*.toml` |
 | Codex config | `.codex/config.toml` |
@@ -47,6 +46,7 @@ description: 저장소 전체의 prompt, agent instructions, tool configuration,
 ### 2. 채널 간 agent 정의 정합성
 
 각 채널에서 같은 역할의 agent를 비교:
+
 - 역할 설명이 의미적으로 동일한지
 - 데이터 조회 우선순위가 일치하는지 (Local → MCP → Web)
 - 출력 경로 규칙이 일치하는지

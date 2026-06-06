@@ -1,21 +1,22 @@
-"""Lint YAML frontmatter in agents/, skills/, .github/prompts/.
+"""Lint YAML frontmatter in .claude/agents/ and .agents/skills/.
 
 규칙:
-- 모든 *.agent.md / SKILL.md / *.prompt.md는 YAML frontmatter로 시작.
+- 모든 .claude agent markdown과 SKILL.md는 YAML frontmatter로 시작.
 - 필수 키: description.
-- *.agent.md / SKILL.md는 추가로 name, applyTo, tools 권장.
+- agent/SKILL은 추가로 name 키를 가져야 한다.
 """
 from __future__ import annotations
-import sys
+
 import pathlib
+import sys
+
 import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 TARGETS = [
-    ("agents/*.agent.md",        ["description", "name"]),
-    ("skills/*/SKILL.md",        ["description", "name"]),
-    (".github/prompts/*.prompt.md", ["description"]),
+    (".claude/agents/*.md",      ["description", "name"]),
+    (".agents/skills/*/SKILL.md", ["description", "name"]),
 ]
 
 
