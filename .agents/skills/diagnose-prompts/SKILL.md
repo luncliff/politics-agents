@@ -46,6 +46,7 @@ description: 저장소 전체의 prompt, agent instructions, tool configuration,
 ### 2. 채널 간 agent 정의 정합성
 
 각 채널에서 같은 역할의 agent를 비교:
+
 - 역할 설명이 의미적으로 동일한지
 - 데이터 조회 우선순위가 일치하는지 (Local → MCP → Web)
 - 출력 경로 규칙이 일치하는지

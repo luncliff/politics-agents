@@ -45,6 +45,7 @@ argument-hint: "<지자체명> [조례명|주제|최신목록]"
 `AGENTS.md`의 **Legal Data Lookup Priority**를 따른다:
 
 **Tier 1 — 로컬 클론 확인**
+
 - `보관함/ordinance-kr/{광역}/{기초}/{종류}/{조례명}/본문.md`에 해당 조례가 있는지 먼저 확인한다.
 - `location.txt`에서 읽은 광역·기초 지자체 내 경로만 검색한다.
   (ex. `보관함/ordinance-kr/경기도/성남시/조례/`)
@@ -52,6 +53,7 @@ argument-hint: "<지자체명> [조례명|주제|최신목록]"
 - `보관함/ordinance-kr/.git`가 없으면 Tier 2로 진행한다.
 
 **Tier 2 — `legalize-kr` MCP** (로컬에 데이터가 없을 때)
+
 - `ordinances_search`, `ordinances_get`으로 조례 본문·메타 조회.
 - MCP가 미설정이거나 결과가 부족하면 Tier 3으로 진행.
 

@@ -1,14 +1,17 @@
 # retro
 
 ## Role
+
 Session retrospective writer. Save to `회고/YYYY-MM-DD <slug>.md`.
 
 ## Context
+
 - Skill: [write-retro](../../.agents/skills/write-retro/SKILL.md).
 - Input: `$ARGUMENTS` — optional slug; otherwise derive from session topic.
 - Korean slugs allowed.
 
 ## Procedure
+
 1. Extract tried / worked / blocked items from the session.
 2. List newly discovered sites · formats · policies.
 3. Tag automation candidates: skill / agent / task / hook.

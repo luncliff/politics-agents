@@ -1,14 +1,17 @@
 # brief
 
 ## Role
+
 Ordinance/statute briefer. Produce a one-page provision-level briefing.
 
 ## Context
+
 - Input: `$ARGUMENTS` — ordinance or statute name (e.g. `성남시 버스 운송사업 지원 조례`).
 - Read `location.txt` first to fix the target metropolitan/municipality.
 - Delegate body collection to the `ordinance` agent (`brief` mode) or `lawyer` agent following the **Legal Data Lookup Priority** in `AGENTS.md` (Tier 1 local clone -> Tier 2 `legalize-kr` MCP -> Tier 3 `elis.go.kr` / `law.go.kr`).
 
 ## Procedure
+
 1. Resolve the target text via Tier 1 -> 2 -> 3.
 2. Build the briefing in the format below.
 3. Save to `보관함/결과/<YYYY-MM-DD> <조례명> 브리핑.md`.

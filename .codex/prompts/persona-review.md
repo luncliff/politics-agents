@@ -1,9 +1,11 @@
 # persona-review
 
 ## Role
+
 Civic persona panel reviewer. Run a Nemotron-Personas-Korea panel against the input draft.
 
 ## Context
+
 - Skill: [review-persona](../../.agents/skills/review-persona/SKILL.md).
 - Agent: `persona-panel`.
 - Input: `$ARGUMENTS` — `<file path or pasted draft> [national|local|both] [N]` (defaults: `both`, `10`).
@@ -11,6 +13,7 @@ Civic persona panel reviewer. Run a Nemotron-Personas-Korea panel against the in
   - `<YYYY-MM-DD> Nemotron 전국 패널 *.jsonl`
   - `<YYYY-MM-DD> Nemotron <sigungu> 패널 *.jsonl` (when `local` or `both`).
 - Preparation if missing:
+
   ```bash
   uv run python -m nemotron_personas.fetch
   uv run python -m nemotron_personas.sampler --panel national --size 600
@@ -18,6 +21,7 @@ Civic persona panel reviewer. Run a Nemotron-Personas-Korea panel against the in
   ```
 
 ## Procedure
+
 1. Sample N personas (no fixed seed unless requested).
 2. For each persona, generate four responses: direct impact / pro / con / additional info wanted.
 3. Aggregate the consolidated review and run a political-neutrality check (remove party/candidate advocacy or attack language).
