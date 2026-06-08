@@ -21,6 +21,12 @@
         "GH_HOST": "github.com",
         "GITHUB_TOKEN": "${env:GITHUB_TOKEN}"
       }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
     }
   }
 }
