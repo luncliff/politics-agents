@@ -62,3 +62,4 @@ desktop.ini
 *.tmp
 *.bak
 *~
+.playwright-mcp
