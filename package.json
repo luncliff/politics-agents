@@ -8,8 +8,7 @@
     "node": ">=24"
   },
   "scripts": {
-    "lint": "node scripts/run-markdownlint.js",
-    "lint:write": "node scripts/run-markdownlint.js --write",
+    "lint": "node scripts/run-markdownlint.js --write",
     "download:sncouncil": "node tools/js/sncouncil-minutes-downloader.js",
     "format": "prettier --write \"**/*.{js,ts,mjs,cjs,jsx,tsx}\" --config tools/.prettierrc --ignore-path tools/.prettierignore",
     "format:check": "prettier --check \"**/*.{js,ts,mjs,cjs,jsx,tsx}\" --config tools/.prettierrc --ignore-path tools/.prettierignore"

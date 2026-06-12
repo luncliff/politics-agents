@@ -279,7 +279,7 @@
       "command": "npm",
       "args": [
         "run",
-        "lint:write"
+        "lint"
       ],
       "problemMatcher": [],
       "presentation": {

@@ -68,7 +68,7 @@ function parseArgs(args) {
     timeoutMs: DEFAULT_TIMEOUT_MS,
     rateLimitMs: DEFAULT_RATE_LIMIT_MS,
     headless: true,
-    channel: "chrome",
+    channel: null,
   };
 
   for (let i = 0; i < args.length; i += 1) {
@@ -98,8 +98,12 @@ function parseArgs(args) {
       i += 1;
       continue;
     }
+    if (arg === "--headed") {
+      options.headless = false;
+      continue;
+    }
     if (arg === "--channel") {
-      options.channel = mustGetValue(args, i, arg);
+      options.channel = normalizeChannel(mustGetValue(args, i, arg));
       i += 1;
       continue;
     }
@@ -144,6 +148,20 @@ function parseBoolean(value, optionName) {
   throw new Error(`${optionName} 값은 true/false 여야 합니다.`);
 }
 
+function normalizeChannel(value) {
+  const raw = String(value || "").trim();
+  if (!raw) {
+    return null;
+  }
+
+  const normalized = raw.toLowerCase();
+  if (["none", "default", "bundled", "auto"].includes(normalized)) {
+    return null;
+  }
+
+  return raw;
+}
+
 function printHelpAndExit() {
   console.log(
     [
@@ -155,7 +173,9 @@ function printHelpAndExit() {
       "  --timeout-ms <number>    Navigation timeout in ms (default: 30000)",
       "  --rate-limit-ms <number> Delay per host between requests (default: 1000)",
       "  --headless <bool>        true | false (default: true)",
-      "  --channel <name>         Browser channel (default: chrome)",
+      "  --headed                 Shortcut for --headless false",
+      "  --channel <name>         Browser channel (default: bundled chromium)",
+      "                           Use none|default|bundled|auto to clear channel",
       "  --help                   Show this message",
       "",
       "Input JSONL format:",
@@ -213,14 +233,18 @@ function normalizeHttpUrl(rawUrl) {
 async function launchBrowser(options) {
   const launchOptions = {
     headless: options.headless,
-    channel: options.channel,
   };
+
+  if (options.channel) {
+    launchOptions.channel = options.channel;
+  }
 
   try {
     return await chromium.launch(launchOptions);
   } catch (error) {
     const detail = error instanceof Error ? error.message : String(error);
-    throw new Error(`브라우저 실행 실패(channel=${options.channel}): ${detail}`);
+    const channelText = options.channel || "bundled-chromium";
+    throw new Error(`브라우저 실행 실패(channel=${channelText}): ${detail}`);
   }
 }
 
