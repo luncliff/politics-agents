@@ -1,0 +1,16 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #4fc3f7;
+}
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); }
+header { padding: 1rem 2rem; border-bottom: 1px solid var(--border); }
+main { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; }
+section { margin-bottom: 1.5rem; }
+#chart-section { display: grid; grid-template-columns: 1fr 320px; gap: 1rem; }
+#detail-panel[hidden] { display: none; }
+#explainer-section[hidden] { display: none; }

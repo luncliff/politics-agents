@@ -11,14 +11,21 @@
     "lint": "node scripts/run-markdownlint.js",
     "lint:write": "node scripts/run-markdownlint.js --write",
     "format": "prettier --write \"**/*.{js,ts,mjs,cjs,jsx,tsx}\" --config tools/.prettierrc --ignore-path tools/.prettierignore",
-    "format:check": "prettier --check \"**/*.{js,ts,mjs,cjs,jsx,tsx}\" --config tools/.prettierrc --ignore-path tools/.prettierignore"
+    "format:check": "prettier --check \"**/*.{js,ts,mjs,cjs,jsx,tsx}\" --config tools/.prettierrc --ignore-path tools/.prettierignore",
+    "test:unit": "node --test tests/unit/",
+    "test:e2e": "npx playwright test --config tests/e2e/playwright.config.mjs",
+    "test": "npm run test:unit && npm run test:e2e",
+    "serve": "npx http-server src -p 8080 -c-1 --silent"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.60.0",
     "eslint": "^10.4.1",
     "eslint-config-prettier": "^10.0.0",
+    "http-server": "^14.1.1",
     "markdownlint": "^0.40.0",
     "markdownlint-cli": "^0.48.0",
+    "playwright": "^1.60.0",
     "prettier": "^3.0.0",
     "typescript-eslint": "^8.60.0"
   }
