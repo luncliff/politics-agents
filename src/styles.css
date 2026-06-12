@@ -14,3 +14,12 @@ section { margin-bottom: 1.5rem; min-height: 1px; }
 #chart-section { display: grid; grid-template-columns: 1fr 320px; gap: 1rem; }
 #detail-panel[hidden] { display: none; }
 #explainer-section[hidden] { display: none; }
+
+/* Timeline */
+.timeline-wrapper { overflow-x: auto; }
+.timeline-svg { min-width: 600px; }
+.timeline-baseline { stroke: var(--border); stroke-width: 2; }
+.timeline-dot { fill: var(--accent); stroke: var(--bg); stroke-width: 2; transition: r 0.2s; }
+.timeline-point.active .timeline-dot { fill: #fff; stroke: var(--accent); stroke-width: 3; }
+.timeline-year { fill: var(--text); font-size: 11px; }
+.election-type { fill: var(--text-muted); font-size: 10px; }

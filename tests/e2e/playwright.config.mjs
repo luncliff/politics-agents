@@ -8,8 +8,9 @@ export default defineConfig({
     headless: true,
   },
   webServer: {
-    command: 'npx http-server src -p 8080 -c-1',
+    command: 'node ../../node_modules/http-server/bin/http-server ../../src -p 8080 -c-1',
     port: 8080,
     reuseExistingServer: true,
+    timeout: 15000,
   },
 });
