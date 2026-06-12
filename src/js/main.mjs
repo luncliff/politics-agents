@@ -4,6 +4,7 @@ import { createTimeline } from './timeline.mjs';
 import { createFilters } from './filters.mjs';
 import { createCohortChart, setPartyColors } from './cohort-chart.mjs';
 import { createDetailPanel } from './detail-panel.mjs';
+import { createEventMarkerUI } from './event-markers.mjs';
 
 const DATA_BASE = 'data/elections';
 
@@ -32,20 +33,32 @@ async function init() {
 
   const detailPanel = createDetailPanel(document.getElementById('detail-panel'));
 
+  let chartRef = null;
+
   const chartContainer = document.getElementById('cohort-chart');
   const chart = createCohortChart(chartContainer, (pointData) => {
     const ds = datasets.find(d => d.election.id === pointData.electionId);
     if (ds) detailPanel.show(pointData, ds.rows);
   });
+  chartRef = chart;
 
   function updateChart() {
     chart.update(datasets, filterState.regions, filterState.ageGroups);
+    if (eventUI) eventUI.renderMarkers();
   }
 
-  createTimeline(
+  let timelineRef = null;
+  timelineRef = createTimeline(
     document.getElementById('timeline-section'),
     meta.elections,
     () => updateChart()
+  );
+
+  const eventUI = createEventMarkerUI(
+    document.getElementById('timeline-section'),
+    () => timelineRef ? timelineRef.timeScale : null,
+    () => chartRef ? chartRef.g : null,
+    (events) => console.log('Events updated:', events)
   );
 
   createFilters(
