@@ -8,7 +8,7 @@ test('page loads with correct title', async ({ page }) => {
 
 test('main sections exist', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('#timeline-section')).toBeAttached();
-  await expect(page.locator('#filters-section')).toBeAttached();
-  await expect(page.locator('#cohort-chart')).toBeAttached();
+  await expect(page.locator('#timeline-section')).toBeVisible();
+  await expect(page.locator('#filters-section')).toBeVisible();
+  await expect(page.locator('#cohort-chart')).toBeVisible();
 });
