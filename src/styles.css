@@ -34,3 +34,11 @@ section { margin-bottom: 1.5rem; min-height: 1px; }
 }
 .filter-btn:hover { border-color: var(--accent); color: var(--text); }
 .filter-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600; }
+
+/* Cohort Chart */
+#cohort-chart svg { overflow: visible; }
+.cohort-line { transition: opacity 0.2s; }
+.cohort-point { stroke: var(--bg); stroke-width: 2; }
+.cohort-point.selected { stroke: #ffd54f; stroke-width: 3; r: 8; }
+.x-axis text, .y-axis text { fill: var(--text-muted); font-size: 11px; }
+.x-axis line, .x-axis path, .y-axis line, .y-axis path { stroke: var(--border); }
