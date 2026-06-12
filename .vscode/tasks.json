@@ -82,19 +82,6 @@
       "problemMatcher": []
     },
     {
-      "label": "civic: copilot session continue",
-      "type": "shell",
-      "command": "copilot",
-      "args": [
-        "--continue"
-      ],
-      "presentation": {
-        "reveal": "always",
-        "panel": "dedicated"
-      },
-      "problemMatcher": []
-    },
-    {
       "label": "civic: find night clinic",
       "type": "shell",
       "command": "copilot",
@@ -189,35 +176,6 @@
       "problemMatcher": []
     },
     {
-      "label": "civic: fetch nemotron personas (dry-run)",
-      "type": "shell",
-      "windows": {
-        "command": "pwsh",
-        "args": [
-          "-NoProfile",
-          "-ExecutionPolicy",
-          "Bypass",
-          "-File",
-          "scripts/fetch_nemotron_personas.ps1"
-        ]
-      },
-      "linux": {
-        "command": "bash",
-        "args": [
-          "-lc",
-          "uv run python -m nemotron_personas.fetch --dry-run"
-        ]
-      },
-      "osx": {
-        "command": "zsh",
-        "args": [
-          "-lc",
-          "uv run python -m nemotron_personas.fetch --dry-run"
-        ]
-      },
-      "problemMatcher": []
-    },
-    {
       "label": "civic: fetch nemotron personas (download)",
       "type": "shell",
       "windows": {
@@ -248,28 +206,28 @@
       "problemMatcher": []
     },
     {
-      "label": "civic: sample nemotron panel (national 600)",
+      "label": "civic: sample nemotron panel (national 1600)",
       "type": "shell",
       "windows": {
         "command": "pwsh",
         "args": [
           "-NoProfile",
           "-Command",
-          "uv run python -m nemotron_personas.sampler --panel national --size 600"
+          "uv run python -m nemotron_personas.sampler --panel national --size 1600"
         ]
       },
       "linux": {
         "command": "bash",
         "args": [
           "-lc",
-          "uv run python -m nemotron_personas.sampler --panel national --size 600"
+          "uv run python -m nemotron_personas.sampler --panel national --size 1600"
         ]
       },
       "osx": {
         "command": "zsh",
         "args": [
           "-lc",
-          "uv run python -m nemotron_personas.sampler --panel national --size 600"
+          "uv run python -m nemotron_personas.sampler --panel national --size 1600"
         ]
       },
       "problemMatcher": []
@@ -282,39 +240,24 @@
         "args": [
           "-NoProfile",
           "-Command",
-          "uv run python -m nemotron_personas.sampler --panel local --size 300"
+          "uv run python -m nemotron_personas.sampler --panel local --size 500"
         ]
       },
       "linux": {
         "command": "bash",
         "args": [
           "-lc",
-          "uv run python -m nemotron_personas.sampler --panel local --size 300"
+          "uv run python -m nemotron_personas.sampler --panel local --size 500"
         ]
       },
       "osx": {
         "command": "zsh",
         "args": [
           "-lc",
-          "uv run python -m nemotron_personas.sampler --panel local --size 300"
+          "uv run python -m nemotron_personas.sampler --panel local --size 500"
         ]
       },
       "problemMatcher": []
-    },
-    {
-      "label": "civic: lint markdown",
-      "type": "shell",
-      "command": "npm",
-      "args": [
-        "run",
-        "lint"
-      ],
-      "problemMatcher": [],
-      "group": "test",
-      "presentation": {
-        "reveal": "always",
-        "panel": "shared"
-      }
     },
     {
       "label": "civic: format js/ts",
@@ -331,7 +274,7 @@
       }
     },
     {
-      "label": "civic: lint markdown (write)",
+      "label": "civic: lint markdown",
       "type": "shell",
       "command": "npm",
       "args": [
