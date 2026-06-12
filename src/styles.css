@@ -103,3 +103,14 @@ section { margin-bottom: 1.5rem; min-height: 1px; }
 .explainer-howto, .explainer-why { margin-bottom: 1rem; }
 .explainer-howto h4, .explainer-why h4 { font-size: 12px; color: var(--text-muted); margin-bottom: 0.25rem; }
 .explainer-howto p, .explainer-why p { font-size: 13px; line-height: 1.6; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  #chart-section { grid-template-columns: 1fr; }
+  #detail-panel { margin-top: 1rem; }
+}
+@media (max-width: 600px) {
+  main { padding: 0.5rem; }
+  .filter-group { gap: 4px; }
+  .filter-btn { font-size: 10px; padding: 3px 8px; }
+}
