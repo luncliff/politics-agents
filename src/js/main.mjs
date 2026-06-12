@@ -3,6 +3,7 @@ import { parseCsv } from './data-loader.mjs';
 import { createTimeline } from './timeline.mjs';
 import { createFilters } from './filters.mjs';
 import { createCohortChart, setPartyColors } from './cohort-chart.mjs';
+import { createDetailPanel } from './detail-panel.mjs';
 
 const DATA_BASE = 'data/elections';
 
@@ -10,7 +11,6 @@ async function init() {
   const metaResp = await fetch(`${DATA_BASE}/meta.json`);
   const meta = await metaResp.json();
 
-  // Load all available election datasets
   const datasets = [];
   for (const election of meta.elections) {
     try {
@@ -20,7 +20,7 @@ async function init() {
         const text = await resp.text();
         datasets.push({ election, rows: parseCsv(text) });
       }
-    } catch (e) { /* skip missing files */ }
+    } catch (e) { /* skip missing */ }
   }
 
   setPartyColors({
@@ -30,9 +30,12 @@ async function init() {
 
   let filterState = { regions: ['전국'], ageGroups: ['전체'], parties: ['전체'] };
 
+  const detailPanel = createDetailPanel(document.getElementById('detail-panel'));
+
   const chartContainer = document.getElementById('cohort-chart');
   const chart = createCohortChart(chartContainer, (pointData) => {
-    console.log('Point clicked:', pointData);
+    const ds = datasets.find(d => d.election.id === pointData.electionId);
+    if (ds) detailPanel.show(pointData, ds.rows);
   });
 
   function updateChart() {
@@ -50,7 +53,6 @@ async function init() {
     (newState) => { filterState = newState; updateChart(); }
   );
 
-  // Initial render
   updateChart();
 }
 
