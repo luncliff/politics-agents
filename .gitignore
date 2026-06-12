@@ -46,6 +46,7 @@ dist/
 build/
 *.log
 .npm/
+test-results
 
 # --- VS Code 사용자별 ---
 .vscode/*.local.json
@@ -63,3 +64,4 @@ desktop.ini
 *.bak
 *~
 .playwright-mcp
+.superpowers
