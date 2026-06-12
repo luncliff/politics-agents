@@ -34,10 +34,18 @@ export function createDetailPanel(container) {
       : '—';
 
     const summary = panel.append('div').attr('class', 'detail-summary');
-    summary.append('div').html(`<span class="detail-label">득표수</span><strong>${totalVotes.toLocaleString()}</strong>`);
-    summary.append('div').html(`<span class="detail-label">유권자수</span><strong>${totalVoters.toLocaleString()}</strong>`);
-    summary.append('div').html(`<span class="detail-label">투표율</span><strong>${avgTurnout}%</strong>`);
-    summary.append('div').html(`<span class="detail-label">득표율</span><strong>${voteSharePct}%</strong>`);
+
+    // Helper function to safely add stat rows using DOM API
+    function addStat(parent, label, value) {
+      const div = parent.append('div');
+      div.append('span').attr('class', 'detail-label').text(label);
+      div.append('strong').text(value);
+    }
+
+    addStat(summary, '득표수', totalVotes.toLocaleString());
+    addStat(summary, '유권자수', totalVoters.toLocaleString());
+    addStat(summary, '투표율', `${avgTurnout}%`);
+    addStat(summary, '득표율', `${voteSharePct}%`);
 
     // Heatmap
     renderHeatmap(panel, electionRows, pointData);

@@ -20,19 +20,36 @@ export function createChartExplainer(toggleBtn, container) {
     const info = EXPLANATIONS[chartType];
     if (!info) return;
 
-    container.innerHTML = `
-      <div class="explainer-content">
-        <h3 class="explainer-chart-name">${info.name}</h3>
-        <div class="explainer-howto">
-          <h4>읽는 법</h4>
-          <p>${info.howto}</p>
-        </div>
-        <div class="explainer-why">
-          <h4>왜 이 차트를 사용하나요?</h4>
-          <p>${info.why}</p>
-        </div>
-      </div>
-    `;
+    container.innerHTML = '';
+    const content = document.createElement('div');
+    content.className = 'explainer-content';
+
+    const h3 = document.createElement('h3');
+    h3.className = 'explainer-chart-name';
+    h3.textContent = info.name;
+    content.appendChild(h3);
+
+    const howtoDiv = document.createElement('div');
+    howtoDiv.className = 'explainer-howto';
+    const howtoH4 = document.createElement('h4');
+    howtoH4.textContent = '읽는 법';
+    const howtoP = document.createElement('p');
+    howtoP.textContent = info.howto;
+    howtoDiv.appendChild(howtoH4);
+    howtoDiv.appendChild(howtoP);
+    content.appendChild(howtoDiv);
+
+    const whyDiv = document.createElement('div');
+    whyDiv.className = 'explainer-why';
+    const whyH4 = document.createElement('h4');
+    whyH4.textContent = '왜 이 차트를 사용하나요?';
+    const whyP = document.createElement('p');
+    whyP.textContent = info.why;
+    whyDiv.appendChild(whyH4);
+    whyDiv.appendChild(whyP);
+    content.appendChild(whyDiv);
+
+    container.appendChild(content);
   }
 
   toggleBtn.addEventListener('click', () => {
