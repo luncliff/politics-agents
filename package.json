@@ -8,8 +8,8 @@
     "node": ">=24"
   },
   "scripts": {
-    "lint": "node scripts/run-markdownlint.js",
-    "lint:write": "node scripts/run-markdownlint.js --write",
+    "lint": "node scripts/run-markdownlint.js --write",
+    "download:sncouncil": "node tools/js/sncouncil-minutes-downloader.js",
     "format": "prettier --write \"**/*.{js,ts,mjs,cjs,jsx,tsx}\" --config tools/.prettierrc --ignore-path tools/.prettierignore",
     "format:check": "prettier --check \"**/*.{js,ts,mjs,cjs,jsx,tsx}\" --config tools/.prettierrc --ignore-path tools/.prettierignore"
   },
@@ -19,6 +19,7 @@
     "eslint-config-prettier": "^10.0.0",
     "markdownlint": "^0.40.0",
     "markdownlint-cli": "^0.48.0",
+    "playwright": "^1.54.0",
     "prettier": "^3.0.0",
     "typescript-eslint": "^8.60.0"
   }

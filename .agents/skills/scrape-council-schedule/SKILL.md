@@ -8,6 +8,7 @@ description: >
   주요의제를 추출해야 할 때; 연도 선택형 드롭다운이나 AJAX 렌더링으로 직접 크롤링이
   불가능할 때; 연간의사일정 문서를 최신 공식 데이터로 갱신할 때.
 argument-hint: "<의회명> [연도|전체] [연간의사일정|위원회|본회의]"
+tools: [vscode, execute, read, agent, edit, search, web, browser, 'playwright/*', todo]
 ---
 
 # scrape-council-schedule
