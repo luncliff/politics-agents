@@ -5,6 +5,7 @@ import { createFilters } from './filters.mjs';
 import { createCohortChart, setPartyColors } from './cohort-chart.mjs';
 import { createDetailPanel } from './detail-panel.mjs';
 import { createEventMarkerUI } from './event-markers.mjs';
+import { createChartExplainer } from './chart-explainer.mjs';
 
 const DATA_BASE = 'data/elections';
 
@@ -32,6 +33,11 @@ async function init() {
   let filterState = { regions: ['전국'], ageGroups: ['전체'], parties: ['전체'] };
 
   const detailPanel = createDetailPanel(document.getElementById('detail-panel'));
+
+  createChartExplainer(
+    document.getElementById('explainer-toggle'),
+    document.getElementById('explainer-section')
+  );
 
   let chartRef = null;
 

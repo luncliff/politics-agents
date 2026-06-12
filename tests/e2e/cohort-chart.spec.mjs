@@ -31,3 +31,18 @@ test('cohort chart points are clickable', async ({ page }) => {
   await point.click({ force: true });
   await expect(point).toHaveClass(/selected/);
 });
+
+test('chart explainer toggle shows explanation', async ({ page }) => {
+  await page.goto('/');
+  const toggle = page.locator('#explainer-toggle');
+  await expect(toggle).toBeVisible();
+  await toggle.click();
+  await expect(page.locator('#explainer-section')).toBeVisible();
+  await expect(page.locator('.explainer-chart-name')).toContainText('꺾은선');
+});
+
+test('chart explainer describes how to read the chart', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('#explainer-toggle').click();
+  await expect(page.locator('.explainer-howto')).toBeVisible();
+});
