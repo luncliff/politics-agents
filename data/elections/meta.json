@@ -1,0 +1,11 @@
+{
+  "elections": [
+    { "id": "presidential-2017", "type": "presidential", "date": "2017-05-09", "name": "제19대 대통령선거" },
+    { "id": "local-2018", "type": "local", "date": "2018-06-13", "name": "제7회 전국동시지방선거" },
+    { "id": "assembly-2020", "type": "assembly", "date": "2020-04-15", "name": "제21대 국회의원선거" },
+    { "id": "presidential-2022", "type": "presidential", "date": "2022-03-09", "name": "제20대 대통령선거" },
+    { "id": "local-2022", "type": "local", "date": "2022-06-01", "name": "제8회 전국동시지방선거" },
+    { "id": "assembly-2024", "type": "assembly", "date": "2024-04-10", "name": "제22대 국회의원선거" },
+    { "id": "presidential-2025", "type": "presidential", "date": "2025-06-03", "name": "제21대 대통령선거" }
+  ]
+}
