@@ -38,10 +38,28 @@ tools: [vscode, execute, read, agent, edit, search, web, browser, 'playwright/*'
 - 게시판 목록에서 **요청 주차와 정확히 일치하는** 게시글 추출
 - 필수 필드: `num`, 기간, 게시일, `f_idx`, `filename_re`, 상세 URL
 
-### 3. 원문/뷰어 수집
+### 3. 원문/뷰어 수집 및 다운로드 보관
 
 - 상세 페이지에서 `download`/`preview` 링크 확보
 - `d_view.asp` -> `doc.html` -> `iframe(view.xhtml)` 순서로 본문 확보
+- **HWP 원본 저장**: `download.asp?f_idx=<f_idx>` 로 HWP 파일을 내려받아  
+  `보관함/다운로드/<host>/board_event1/<f_idx>_<filename>.hwp` 에 저장  
+  (이미 존재하면 덮어쓰지 않고 건너뜀)
+- **메타데이터 저장**: 같은 디렉터리에 `<f_idx>_<filename>.hwp.meta.json` 생성
+
+  ```json
+  {
+    "board": "board_event1",
+    "num": "<num>",
+    "f_idx": "<f_idx>",
+    "filename_re": "<filename_re>",
+    "week_key": "YYYY-MM-DD~MM-DD",
+    "source_url": "<상세 페이지 URL>",
+    "download_url": "<download.asp URL>",
+    "viewer_xhtml": "<view.xhtml URL>",
+    "collected_at": "YYYY-MM-DDTHH:MM:SS+09:00"
+  }
+  ```
 
 ### 4. 테이블 파싱
 
@@ -64,6 +82,7 @@ tools: [vscode, execute, read, agent, edit, search, web, browser, 'playwright/*'
 - `V5` 배포본에 담당자 실명/개인 내선번호 미노출
 - `V6` 배포본에서 부서/관리과 대표 연락처는 비마스킹 유지
 - `V7` 월 문서 병합 후 중복 `num`/중복 주차 키 없음
+- `V8` 수집된 모든 `num`에 대해 `보관함/다운로드/<host>/board_event1/<f_idx>_*.hwp` 파일과 `.meta.json` 쌍이 존재
 
 검증 실패 시: `status: incomplete` + `missing_nums` + `failed_checks` 명시, 완료 보고 금지.
 
@@ -73,7 +92,11 @@ tools: [vscode, execute, read, agent, edit, search, web, browser, 'playwright/*'
 - 없으면 신규 생성, 있으면 `num` 기준 upsert. 검증은 병합 후 문서 기준.
 - 예) 기존 4주차만 존재 → 2·3주차 요청 → 같은 월 문서에 2·3·4주차 공존.
 
-**원문 보관**: `보관함/다운로드/<host>/board_event1/{f_idx}_{filename}.hwp` + `.meta.json`
+**원문 보관** (절차 3단계에서 즉시 저장):
+- HWP: `보관함/다운로드/<host>/board_event1/<f_idx>_<filename>.hwp`
+- 메타: `보관함/다운로드/<host>/board_event1/<f_idx>_<filename>.hwp.meta.json`
+- 분당구 host 예시: `www.bundang-gu.go.kr`
+- 파일이 이미 있으면 건너뜀(immutable 원칙); `.meta.json`은 `collected_at`만 최신값으로 갱신
 
 ## 출력 스켈레톤
 
@@ -105,6 +128,7 @@ status: complete
 - V5: pass
 - V6: pass
 - V7: pass
+- V8: pass
 ```
 
 ---
