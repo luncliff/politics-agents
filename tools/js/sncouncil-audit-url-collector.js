@@ -2,9 +2,10 @@
 
 const process = require("node:process");
 
-const COUNCiL_ID = "SEONGNAM";
+const COUNCIL_ID = "SEONGNAM";
 const TH = 9;
 const DEFAULT_YEARS = [2023, 2024, 2025];
+const AUDIT_WINDOW_DAYS = 9;
 const STANDING_COMMITTEES = new Set([
   "의회운영위원회",
   "행정교육위원회",
@@ -23,6 +24,7 @@ async function main() {
     const session = pickRegularSession(sessionInfo, year);
     const committees = await fetchCommitteeList(session.session);
 
+    const candidates = [];
     for (const committee of committees) {
       if (!STANDING_COMMITTEES.has(committee.title)) {
         continue;
@@ -30,26 +32,41 @@ async function main() {
 
       const orders = await fetchOrderList(session.session, committee.code);
       for (const order of orders) {
+        const plainTitle = stripHtml(order.title);
         const key = extractRecordKey(order.title);
+        const date = extractOrderDate(plainTitle);
         if (!key) {
           continue;
         }
 
-        const turn = stripHtml(order.title)
-          .replace(/\(.*/u, "")
-          .trim();
-
-        rows.push({
+        candidates.push({
           url: `https://www.sncouncil.go.kr/record/recordView.do?key=${key}`,
           year,
           round: `제${session.session}회`,
           meeting: committee.title,
-          turn,
+          turn: extractOrderTurn(plainTitle),
           round_type: session.sessionTypeRaw,
           session: session.session,
           committee_code: committee.code,
+          date,
         });
       }
+    }
+
+    const auditStart = getEarliestDate(candidates);
+    const auditEnd = auditStart ? addDays(auditStart, AUDIT_WINDOW_DAYS - 1) : null;
+
+    for (const row of candidates) {
+      if (!row.date) {
+        continue;
+      }
+      if (auditStart && auditEnd) {
+        if (row.date < auditStart || row.date > auditEnd) {
+          continue;
+        }
+      }
+
+      rows.push(row);
     }
   }
 
@@ -119,7 +136,7 @@ function printHelpAndExit() {
 
 async function fetchSessionYearList(year) {
   const url = new URL("https://www.sncouncil.go.kr/record/sessionYearList.do");
-  url.searchParams.set("councilId", COUNCiL_ID);
+  url.searchParams.set("councilId", COUNCIL_ID);
   url.searchParams.set("year", String(year));
 
   const response = await fetch(url);
@@ -163,13 +180,13 @@ function parseSessionNode(item) {
 
   return {
     session: Number.parseInt(match.groups.session, 10),
-    sessionTypeRaw: match.groups.sessionType.trim(),
+    sessionTypeRaw: match.groups.sessionType.replace(/\s+/gu, "").trim(),
   };
 }
 
 async function fetchCommitteeList(session) {
   const url = new URL("https://www.sncouncil.go.kr/record/committeeList.do");
-  url.searchParams.set("councilId", COUNCiL_ID);
+  url.searchParams.set("councilId", COUNCIL_ID);
   url.searchParams.set("th", String(TH));
   url.searchParams.set("session", String(session));
 
@@ -193,7 +210,7 @@ async function fetchCommitteeList(session) {
 
 async function fetchOrderList(session, code) {
   const url = new URL("https://www.sncouncil.go.kr/record/orderList.do");
-  url.searchParams.set("councilId", COUNCiL_ID);
+  url.searchParams.set("councilId", COUNCIL_ID);
   url.searchParams.set("th", String(TH));
   url.searchParams.set("session", String(session));
   url.searchParams.set("code", code);
@@ -218,6 +235,58 @@ async function fetchOrderList(session, code) {
 function extractRecordKey(html) {
   const match = String(html || "").match(/recordView\.do\?key=([a-f0-9]+)/iu);
   return match ? match[1] : null;
+}
+
+function extractOrderTurn(text) {
+  const plain = String(text || "");
+  const match = plain.match(/^([^\(]+)\(/u);
+  const turn = match ? match[1].trim() : plain.trim();
+  return turn.replace(/^제/u, "");
+}
+
+function extractOrderDate(text) {
+  const plain = String(text || "");
+  const match = plain.match(/\((?<date>\d{4}\.\d{2}\.\d{2}\s+[가-힣]+)\)/u);
+  if (!match || !match.groups) {
+    return null;
+  }
+
+  return match.groups.date;
+}
+
+function getEarliestDate(rows) {
+  const dates = rows.map((row) => row.date).filter(Boolean);
+  if (dates.length === 0) {
+    return null;
+  }
+
+  dates.sort();
+  return dates[0];
+}
+
+function addDays(dateText, days) {
+  const parsed = parseDate(dateText);
+  parsed.setDate(parsed.getDate() + days);
+  return formatDate(parsed);
+}
+
+function parseDate(dateText) {
+  const match = String(dateText || "").match(/^(\d{4})\.(\d{2})\.(\d{2})/u);
+  if (!match) {
+    throw new Error(`날짜 형식 오류: ${dateText}`);
+  }
+
+  const year = Number.parseInt(match[1], 10);
+  const month = Number.parseInt(match[2], 10) - 1;
+  const day = Number.parseInt(match[3], 10);
+  return new Date(Date.UTC(year, month, day));
+}
+
+function formatDate(date) {
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  return `${year}.${month}.${day}`;
 }
 
 function stripHtml(html) {
