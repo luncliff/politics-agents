@@ -63,6 +63,36 @@
         "공직선거법",
         "지방선거"
       ]
+    },
+    {
+      "id": "shared-a30e664d",
+      "url": "https://notebooklm.google.com/notebook/a30e664d-8d28-46be-85f5-425ec8ccca02",
+      "notebook_id": "a30e664d-8d28-46be-85f5-425ec8ccca02",
+      "name": "성남시청 2026년 세입세출예산서 본예산 추경 분석",
+      "description": "성남시청 2026년 본예산과 1회~4회 추경 세입세출예산서 PDF를 모아 회계별 규모, 파일 구조, 추경 구성 여부를 분석하는 NotebookLM 노트북.",
+      "topics": [
+        "성남시",
+        "세입세출예산서",
+        "본예산",
+        "추가경정예산",
+        "지방재정"
+      ],
+      "content_types": [
+        "notebooklm",
+        "budget",
+        "local-finance"
+      ],
+      "use_cases": [
+        "Answer questions about Seongnam City's 2026 base budget, supplementary budgets, and account-level budget structure"
+      ],
+      "tags": [
+        "notebooklm",
+        "shared",
+        "성남시",
+        "예산",
+        "추경",
+        "지방재정365"
+      ]
     }
   ]
 }
