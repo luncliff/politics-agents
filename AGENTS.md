@@ -6,6 +6,20 @@ Narrower scope wins: `applyTo` `.instructions.md` > sub-folder `AGENTS.md` > thi
 
 Korean local-politics information pipeline: **collect → process → publish**, with citations at every step.
 
+### Agent Execution Process
+
+ALL agents must follow this process for given inputs.
+Use todo tools to track the status.
+
+Ensure ALL steps have finished before reporting completion.
+
+1. Think: Analyze given tasks. Organize descriptions, backgrounds, references, constraints, and definition of done.
+2. Define: Establish requirements and goals.
+3. Decide: Select the skills. State MINIMUM work scope and changes for task.
+4. Start: Execute task.
+5. Validate: Run tests or verifications. Check outputs against goals.
+6. Loop: Repeat until objectives/goals are fulfilled.
+
 ## Repository Map
 
 | Path | AGENTS.md | Purpose |
