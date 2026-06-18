@@ -286,6 +286,70 @@
         "reveal": "always",
         "panel": "shared"
       }
+    },
+    {
+      "label": "civic: collect bundang-gu weekly events",
+      "type": "shell",
+      "windows": {
+        "command": "npm",
+        "args": [
+          "run",
+          "download:bundang-gu-weekly-events",
+          "--",
+          "--weeks",
+          "${input:bundangWeeklyWeeks}",
+          "--migrate",
+          "${input:bundangWeeklyMigrateMode}"
+        ]
+      },
+      "linux": {
+        "command": "npm",
+        "args": [
+          "run",
+          "download:bundang-gu-weekly-events",
+          "--",
+          "--weeks",
+          "${input:bundangWeeklyWeeks}",
+          "--migrate",
+          "${input:bundangWeeklyMigrateMode}"
+        ]
+      },
+      "osx": {
+        "command": "npm",
+        "args": [
+          "run",
+          "download:bundang-gu-weekly-events",
+          "--",
+          "--weeks",
+          "${input:bundangWeeklyWeeks}",
+          "--migrate",
+          "${input:bundangWeeklyMigrateMode}"
+        ]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "bundangWeeklyWeeks",
+      "type": "promptString",
+      "description": "주차 키 CSV (YYYY-MM-DD~YYYY-MM-DD[, ...])",
+      "default": "2026-06-01~2026-06-07"
+    },
+    {
+      "id": "bundangWeeklyMigrateMode",
+      "type": "pickString",
+      "description": "기존 board_event1 하위 파일 처리",
+      "default": "move",
+      "options": [
+        "move",
+        "copy",
+        "skip"
+      ]
     }
   ]
 }

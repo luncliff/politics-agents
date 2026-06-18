@@ -112,6 +112,7 @@ GitHub Copilot은 `.claude/agents/*.md`와 `.claude/commands/*.md`를 공용 소
 | `civic: fetch nemotron personas (download)` | Nemotron-Personas-Korea parquet 다운로드 |
 | `civic: sample nemotron panel (national 600)` | 전국 시민 페르소나 패널 600명 추출 |
 | `civic: sample nemotron panel (local from location.txt)` | 지역 시민 페르소나 패널 300명 추출 |
+| `civic: collect bundang-gu weekly events` | 분당구 주간행사계획 배치 수집/병합(Node.js) |
 
 채팅창 자연어 예시:
 

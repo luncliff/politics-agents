@@ -10,6 +10,7 @@
   "scripts": {
     "lint": "node scripts/run-markdownlint.js --write",
     "download:sncouncil": "node tools/js/sncouncil-minutes-downloader.js",
+    "download:bundang-gu-weekly-events": "node tools/js/bundang-gu-weekly-events.js",
     "format": "prettier --write \"**/*.{js,ts,mjs,cjs,jsx,tsx}\" --config tools/.prettierrc --ignore-path tools/.prettierignore",
     "format:check": "prettier --check \"**/*.{js,ts,mjs,cjs,jsx,tsx}\" --config tools/.prettierrc --ignore-path tools/.prettierignore"
   },
