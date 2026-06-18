@@ -91,6 +91,7 @@ tools: [vscode, execute, read, agent, edit, search, web, browser, 'playwright/*'
 **Markdown 월 문서** (`보관함/결과/YYYY-MM <지역> 주간행사계획.md`)
 - 없으면 신규 생성, 있으면 `num` 기준 upsert. 검증은 병합 후 문서 기준.
 - 예) 기존 4주차만 존재 → 2·3주차 요청 → 같은 월 문서에 2·3·4주차 공존.
+- **최종 출력물은 self-contained 이어야 한다**: HTML 주석 프런트매터와 본문 표만 포함. `## 검증 결과` 섹션은 최종 출력물에 포함하지 않는다.
 
 **원문 보관** (절차 3단계에서 즉시 저장):
 - HWP: `보관함/다운로드/<host>/board_event1/<f_idx>_<filename>.hwp`
@@ -99,6 +100,9 @@ tools: [vscode, execute, read, agent, edit, search, web, browser, 'playwright/*'
 - 파일이 이미 있으면 건너뜀(immutable 원칙); `.meta.json`은 `collected_at`만 최신값으로 갱신
 
 ## 출력 스켈레톤
+
+> `## 검증 결과` 섹션은 **내부 검증 전용**이며 최종 출력물에 포함하지 않는다.
+> 검증 실패 시에만 에이전트가 채팅으로 오류를 보고하고, 완료 후 출력 파일에는 흔적을 남기지 않는다.
 
 ```markdown
 <!--
@@ -118,17 +122,6 @@ status: complete
 
 ## 주간행사 상세 — YYYY-MM-DD ~ MM-DD (num=...)
 ...
-
-## 검증 결과
-- V0: pass
-- V1: pass
-- V2: pass
-- V3: pass
-- V4: pass
-- V5: pass
-- V6: pass
-- V7: pass
-- V8: pass
 ```
 
 ---
