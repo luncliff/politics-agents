@@ -19,7 +19,7 @@
     "eslint-config-prettier": "^10.0.0",
     "markdownlint": "^0.40.0",
     "markdownlint-cli": "^0.48.0",
-    "playwright": "^1.54.0",
+    "playwright": "^1.61.1",
     "prettier": "^3.0.0",
     "typescript-eslint": "^8.60.0"
   }
