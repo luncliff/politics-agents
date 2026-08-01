@@ -5,7 +5,7 @@ description = "대한민국 지방정치에 참여하려는 시민을 위한 Git
 requires-python = ">=3.12"
 dependencies = [
     "huggingface_hub>=1.18.0",
-    "pyarrow>=17",
+    "pyarrow>=25.0.0",
 ]
 
 [build-system]
