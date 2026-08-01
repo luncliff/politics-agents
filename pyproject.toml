@@ -4,7 +4,7 @@ version = "0.2620.0+dev"
 description = "대한민국 지방정치에 참여하려는 시민을 위한 GitHub Copilot CLI + VS Code Chat 기반 다중 에이전트 도구 모음"
 requires-python = ">=3.12"
 dependencies = [
-    "huggingface_hub>=1.18.0",
+    "huggingface_hub>=1.25.1",
     "pyarrow>=17",
 ]
 
